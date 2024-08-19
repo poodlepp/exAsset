@@ -1,66 +1,38 @@
-## Foundry
+[TOC]
+### FEATURES
+- 业务功能
+  - 支持用户存入ETH
+  - 支持用户兑换usdc并取出
+  - owner可以取出合约中剩余的ETH,USDC
+- 特性
+  - 复用openzeppelin代码
+  - 接入chainlink预言机
+  - 实现UUPS可升级合约
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+### TEST
+- 单元测试
+  - initialize 测试
+  - deposit/swap/withdraw
+- 预言机价格测试
+  - 测试环境使用mock文件进行测试
+- 升级测试
+  - 升级前后，storage数据不受影响
 
-Foundry consists of:
+![alt text](readme_img/image3.png)
+![alt text](readme_img/image2.png)
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+### slither 检测
+![alt text](readme_img/image.png)
 
-## Documentation
+### 部署指南
+- 维护自己的.env环境变量
+- make install  (相关依赖版本已经配置好)
+- make test
+- make deploy
+- make upgrade
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+### SEPOLIA 已部署合约
+logic contract-1: 0x044da787a884227b4b76084c9884808045af5f1e
+logic contract-2: 0x330576e950e9a246f524024112783b226628b63b
+proxy contract: 0x7774bbf74dae45bc89796ad2906277e7bd8e6c6d
+(因为组件相关的一些原因，verify未成功，还未解决。)
